@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #0d0f14;
+  --color-obsidian-light: #161923;
+  --color-obsidian-mid: #1e2433;
+  --color-emerald: #10b981;
+  --color-emerald-dim: #0d9668;
+  --color-emerald-glow: #34d399;
+  --color-crimson: #ef4444;
+  --color-crimson-dim: #dc2626;
+  --color-amber: #f59e0b;
+  --color-amber-dim: #d97706;
+  --color-slate-terminal: #94a3b8;
+  --color-slate-dim: #475569;
+
+  --font-mono: "Share Tech Mono", "Courier New", monospace;
+  --font-pixel: "Press Start 2P", monospace;
+
+  --shadow-emerald-glow: 0 0 20px rgba(16, 185, 129, 0.4);
+  --shadow-crimson-glow: 0 0 20px rgba(239, 68, 68, 0.4);
+  --shadow-amber-glow: 0 0 15px rgba(245, 158, 11, 0.3);
+
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+  --animate-screen-shake: screenShake 0.4s ease-in-out;
+}
+
+:root {
+  --obsidian: #0d0f14;
+  --emerald: #10b981;
+  --crimson: #ef4444;
+  --amber: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--obsidian);
+  color: #e2e8f0;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* CRT scanline overlay */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+.crt-vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #161923;
+}
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #34d399;
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* SQL keyword highlight */
+.sql-keyword { color: #818cf8; }
+.sql-string   { color: #f59e0b; }
+.sql-number   { color: #34d399; }
+.sql-comment  { color: #475569; font-style: italic; }
+.sql-operator { color: #e2e8f0; }
+
+/* Pixel font size fixes */
+.font-pixel {
+  font-size: 8px;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+/* Table styles */
+.result-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 11px;
+}
+.result-table th {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  padding: 4px 8px;
+  text-align: left;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-family: 'Share Tech Mono', monospace;
+}
+.result-table td {
+  padding: 3px 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #cbd5e1;
+  font-family: 'Share Tech Mono', monospace;
+}
+.result-table tr:nth-child(even) td {
+  background: rgba(255,255,255,0.03);
+}
+.result-table tr:hover td {
+  background: rgba(16, 185, 129, 0.08);
+}
+
+/* Damage number float */
+@keyframes damageFloat {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-60px) scale(1.4); opacity: 0; }
+}
+.damage-float {
+  animation: damageFloat 1.2s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Particle burst */
+@keyframes particleBurst {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+.particle {
+  animation: particleBurst 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Victory glow pulse */
+@keyframes victoryPulse {
+  0%, 100% { text-shadow: 0 0 10px #10b981, 0 0 20px #10b981; }
+  50%       { text-shadow: 0 0 20px #34d399, 0 0 40px #34d399, 0 0 60px #34d399; }
+}
+.victory-text {
+  animation: victoryPulse 1.5s ease-in-out infinite;
+}
+
+/* Door open animation */
+@keyframes doorOpen {
+  0%   { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+
+/* Screen shake */
+@keyframes screenShake {
+  0%, 100% { transform: translate(0, 0); }
+  10%  { transform: translate(-3px, -1px); }
+  20%  { transform: translate(3px, 1px); }
+  30%  { transform: translate(-3px, 2px); }
+  40%  { transform: translate(3px, -2px); }
+  50%  { transform: translate(-2px, -1px); }
+  60%  { transform: translate(2px, 1px); }
+  70%  { transform: translate(-1px, 2px); }
+  80%  { transform: translate(1px, -1px); }
+  90%  { transform: translate(-1px, 0); }
+}
+.screen-shake {
+  animation: screenShake 0.4s ease-in-out;
+}
