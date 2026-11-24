@@ -10,9 +10,9 @@ Built for the **Kiroween Hackathon (Frankenstein Category)** using **Kiro**'s sp
 
 | Skill Entry & Field Manual | Live Dungeon & Visual Schema Inspector |
 | :---: | :---: |
-| ![Skill Selection & Field Manual](screenshots/1-onboarding.png) | ![Dungeon Gameplay & Hover Badges](screenshots/2-gameplay.png) |
+| ![1](./Asset/1.png) | ![2](./Asset/3.png) |
 | **3-Stage "Teach First" Hint System** | **100-Level Mastery Curriculum** |
-| ![3-Stage Teaching Hints](screenshots/3-hints.png) | ![100-Level Dungeon Floors](screenshots/4-curriculum.png) |
+| ![3](./Asset/2.png) | ![4](./Asset/4.png) |
 
 ---
 
@@ -71,9 +71,9 @@ This repository includes the `.kiro/` directory showcasing our spec-driven workf
 ### Installation & Run
 ```bash
 # 1. Clone the repository
-git clone https://github.com
-cd sql-dungeon
-
+git clone https://github.com/Akash-Dhanwate/SQL-Dungeon.git
+cd SQL-Dungeon
+cd sql-dengeon
 # 2. Install dependencies
 npm install
 
