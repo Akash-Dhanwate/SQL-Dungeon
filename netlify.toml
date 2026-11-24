@@ -1,0 +1,10 @@
+# The app lives in the sql-dungeon/ subfolder (Vite + React + TypeScript, npm).
+[build]
+  base = "sql-dungeon"
+  command = "npm run build"
+  # Relative to the base directory: Vite writes the site to sql-dungeon/dist
+  publish = "dist"
+
+[build.environment]
+  # Vite 8 / Rolldown require Node ^20.19.0 || >=22.12.0
+  NODE_VERSION = "24"
